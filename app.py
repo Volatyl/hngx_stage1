@@ -1,6 +1,5 @@
 from flask import Flask, request
 import datetime
-import pytz
 
 app = Flask(__name__)
 
@@ -11,7 +10,7 @@ def index():
     slack_name = request.args.get('slack_name')
     track = request.args.get('track')
     day = datetime.date.today().strftime('%A')
-    time = datetime.datetime.now(pytz.utc)
+    time = datetime.datetime.now(datetime.timezone.utc).isoformat()[:-6] + 'Z'
 
     result = {
         "slack_name": slack_name,
