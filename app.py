@@ -10,7 +10,7 @@ def index():
     slack_name = request.args.get('slack_name')
     track = request.args.get('track')
     day = datetime.date.today().strftime('%A')
-    time = datetime.datetime.now(datetime.timezone.utc).isoformat()[:-6] + 'Z'
+    time = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
     result = {
         "slack_name": slack_name,
